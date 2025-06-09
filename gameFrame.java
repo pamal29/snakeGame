@@ -1,4 +1,5 @@
 import javax.swing.*;
+import snakeGame.gamePanel;
 
 public class gameFrame extends JFrame {
 
