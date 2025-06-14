@@ -8,7 +8,7 @@ public class gamePanel extends JPanel implements ActionListener {
 
     static final int SCREEN_WIDTH = 600;
     static final int SCREEN_HEIGHT= 600;
-    static final int UNIT_SIZE = 25;
+    static final int UNIT_SIZE = 50;
     static final int GAME_UNITS = (SCREEN_HEIGHT*SCREEN_WIDTH)/UNIT_SIZE;
     static final int DELAY = 75;
     final int x[]= new int[GAME_UNITS];
@@ -33,6 +33,12 @@ public class gamePanel extends JPanel implements ActionListener {
 
     public void startGame(){
         newApple();
+
+        for (int i = 0; i < bodyParts; i++) {
+            x[i] = 100 - i * UNIT_SIZE;
+            y[i] = 100;                 
+        }
+
         running = true;
         timer = new Timer(DELAY, this);
         timer.start();
@@ -58,6 +64,16 @@ public class gamePanel extends JPanel implements ActionListener {
     }
 
     System.out.println("Apple drawn at: " + appleX + ", " + appleY);
+
+   for(int i = 0; i < bodyParts; i++) {
+        if(i == 0) {
+            g.setColor(Color.GREEN);
+            g.fillOval(x[i], y[i], UNIT_SIZE, UNIT_SIZE); 
+        } else {
+            g.setColor(new Color(45, 180, 0));
+            g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE); 
+        }
+}
     }
 
 
