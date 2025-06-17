@@ -9,7 +9,7 @@ public class gamePanel extends JPanel implements ActionListener {
     static final int SCREEN_WIDTH = 800;
     static final int SCREEN_HEIGHT= 800;
     static final int UNIT_SIZE = 25;
-    static final int GAME_UNITS = (SCREEN_HEIGHT*SCREEN_WIDTH)/UNIT_SIZE;
+    static final int GAME_UNITS = (SCREEN_HEIGHT*SCREEN_WIDTH)/(UNIT_SIZE * UNIT_SIZE);
     static final int DELAY = 75;
     final int x[]= new int[GAME_UNITS];
     final int y[]= new int[GAME_UNITS];
@@ -63,14 +63,14 @@ public class gamePanel extends JPanel implements ActionListener {
             g.drawLine(0, i * UNIT_SIZE, SCREEN_WIDTH, i * UNIT_SIZE);
         }
 
-        System.out.println("Apple drawn at: " + appleX + ", " + appleY);
+        //System.out.println("Apple drawn at: " + appleX + ", " + appleY);
 
     for(int i = 0; i < bodyParts; i++) {
         if(i == 0) {
-            g.setColor(new Color(144, 238, 144)); // light green head
-            g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE); // square head
+            g.setColor(new Color(144, 238, 144)); 
+            g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE); 
         } else {
-            g.setColor(new Color(45, 180, 0)); // dark green body
+            g.setColor(new Color(45, 180, 0)); 
             g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE); 
         }
     }
@@ -79,7 +79,7 @@ public class gamePanel extends JPanel implements ActionListener {
 
 
     public void move(){
-        for(int i = bodyParts; i>0; i++){
+        for(int i = bodyParts; i>0; i--){
             x[i] = x[i - 1];
             y[i] = y[i - 1];
 
@@ -103,9 +103,39 @@ public class gamePanel extends JPanel implements ActionListener {
     public void checkApple(){
 
     }
-    public void checkCollisions(){
+    
+   public void checkCollisions() {
+            // Check if head collides with body
+            for (int i = bodyParts; i > 0; i--) {
+                if ((x[0] == x[i]) && (y[0] == y[i])) {
+                    running = false;
+                }
+            }
 
+            // Check if head touches left wall
+            if (x[0] < 0) {
+                running = false;
+            }
+            // Check if head touches right wall
+            if (x[0] < 0 || x[0] >= SCREEN_WIDTH || y[0] < 0 || 
+                y[0] >= SCREEN_HEIGHT) {
+                    running = false;
+            }
+
+            // Check if head touches top wall
+            if (y[0] < 0) {
+                running = false;
+            }
+            // Check if head touches bottom wall
+            if (y[0] >= SCREEN_HEIGHT) {
+                running = false;
+            }
+
+            if (!running) {
+                timer.stop();
+            }
     }
+
     public void gameOver(Graphics g){
 
     }

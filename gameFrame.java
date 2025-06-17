@@ -1,3 +1,5 @@
+import java.awt.Dimension;
+
 import javax.swing.*;
 
 public class gameFrame extends JFrame {
@@ -8,10 +10,10 @@ public class gameFrame extends JFrame {
         this.setTitle("Snake");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
-        this.pack();
         this.setVisible(true);
         this.setLocationRelativeTo(null);
-        this.setSize(600, 600);  
+        this.setPreferredSize(new Dimension(800, 800));
+        this.pack();
 
     }
 }
