@@ -67,14 +67,23 @@ public class gamePanel extends JPanel implements ActionListener {
             for(int i = 0; i < bodyParts; i++) {
                 if(i == 0) {
                     g.setColor(new Color(144, 238, 144)); 
-                } else {
+                } 
+                else {
                     g.setColor(new Color(45, 180, 0)); 
                 }
                 g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE); 
             }
-        } else {
-            gameOver(g);
+         
+                g.setColor(Color.red);
+                g.setFont(new Font("Ink Free",Font.BOLD, 40));
+                FontMetrics metrics = getFontMetrics(g.getFont());
+                g.drawString("Score: "+applesEaten, 
+                            (SCREEN_WIDTH - metrics.stringWidth("Score: " +applesEaten ))/2, 
+                            g.getFont().getSize()); 
         }
+        else {
+                gameOver(g);
+            }   
 
 }
 
@@ -142,6 +151,14 @@ public class gamePanel extends JPanel implements ActionListener {
     }
 
     public void gameOver(Graphics g){
+        //score
+        g.setColor(Color.red);
+        g.setFont(new Font("Ink Free",Font.BOLD, 40));
+        FontMetrics metrics = getFontMetrics(g.getFont());
+        g.drawString("Score: "+applesEaten, 
+                    (SCREEN_WIDTH - metrics.stringWidth("Score: " +applesEaten ))/2, 
+                    g.getFont().getSize()); 
+        
         //game over text
         g.setColor(Color.red);
         g.setFont(new Font("Ink Free",Font.BOLD, 75));
