@@ -6,8 +6,8 @@ import java.util.Random;
 
 public class gamePanel extends JPanel implements ActionListener {
 
-    static final int SCREEN_WIDTH = 400;
-    static final int SCREEN_HEIGHT= 400;
+    static final int SCREEN_WIDTH = 700;
+    static final int SCREEN_HEIGHT= 700;
     static final int UNIT_SIZE = 25;
     static final int GAME_UNITS = (SCREEN_HEIGHT*SCREEN_WIDTH)/(UNIT_SIZE * UNIT_SIZE);
     static final int DELAY = 100;
@@ -161,10 +161,10 @@ public class gamePanel extends JPanel implements ActionListener {
         
         //game over text
         g.setColor(Color.red);
-        g.setFont(new Font("Ink Free",Font.BOLD, 75));
-        FontMetrics metrics = getFontMetrics(g.getFont());
+        g.setFont(new Font("Ink Free",Font.BOLD,40 ));
+        FontMetrics metrics2 = getFontMetrics(g.getFont());
         g.drawString("Game Over", 
-                    (SCREEN_WIDTH - metrics.stringWidth("Game Over"))/2, 
+                    (SCREEN_WIDTH - metrics2.stringWidth("Game Over"))/2, 
                     SCREEN_HEIGHT / 2);
     }
 

@@ -10,11 +10,10 @@ public class gameFrame extends JFrame {
         this.setTitle("Snake");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
+        this.setPreferredSize(new Dimension(700, 700));
         this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
-        
-        //this.setPreferredSize(new Dimension(700, 700));
 
     }
 }
